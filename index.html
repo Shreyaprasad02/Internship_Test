@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>Employee Name</th>
+                <th>Designation</th>
+                <th>Date of Joining</th>
+            </tr>
+        </thead>
+        <tbody id="employeeData">
+
+        </tbody>
+    </table>
+
+    <script>
+        const employees = [
+            { name: "Shreya Prasad", designation: "Technical Writer", joiningDate: "2023-08-02", salary: "650000" },
+            { name: "Sneha Deshmukh", designation: "FrontEnd Developer", joiningDate: "2022-07-03", salary: "700000" },
+            { name: "Aishwarya Sathe", designation: "Technical Writer", joiningDate: "2021-06-04", salary: "650000" },
+            { name: "Gaurav Sharma", designation: "Backend Developer", joiningDate: "2020-05-05", salary: "800000" },
+            { name: "Anagha More", designation: "Technical Writer", joiningDate: "2021-06-04", salary: "600000" },
+        ];
+
+        function filterAndDisplay() {
+            const filterEmployees = employees.filter(employee => employee.designation === "Technical Writer" && (employee.salary > 500000 && employee.salary < 700000));
+
+            const tableBody = document.getElementById('employeeData');
+            tableBody.innerHTML = '';
+            filterEmployees.forEach(employee => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${employee.name}</td>
+                <td>${employee.designation}</td>
+                <td>${employee.joiningDate}</td>
+                `;
+                tableBody.appendChild(row);
+
+            });
+        }
+
+        // calling the function
+        filterAndDisplay();
+
+    </script>
+</body>
+
+</html>
